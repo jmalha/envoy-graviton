@@ -29,9 +29,10 @@
 #include "openssl/x509v3.h"
 
 namespace Envoy {
-#if !defined(OPENSSL_IS_BORINGSSL) && !defined(OPENSSL_IS_AWSLC)
-
+#ifndef OPENSSL_IS_BORINGSSL
+#ifndef OPENSSL_IS_AWSLC
 #error Envoy requires BoringSSL or AWS-LC
+#endif
 #endif
 
 namespace Extensions {
